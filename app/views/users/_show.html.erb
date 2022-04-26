@@ -10,4 +10,6 @@
       <td><%= user.introduction%></td>
     </tr>
 </table>
-<%= link_to "edit", edit_user_path(user.id)%>
+<% if user == current_user%>
+  <%= link_to "edit", edit_user_path(user.id)%>
+<% end %>

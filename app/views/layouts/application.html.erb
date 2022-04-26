@@ -43,6 +43,9 @@
       <% end %>
     </header>
     <main>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: key) %>
+      <% end %>
       <%= yield %>
     </main>
     <footer>
