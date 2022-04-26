@@ -2,9 +2,10 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://kit.fontawesome.com/218009f3a1.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,34 +13,63 @@
 
   <body>
     <header>
-      <div><%= link_to "Bookers", "/" %>
+      <div>
+        <%= link_to "Bookers", "/" %>
       </div>
       <% if user_signed_in? %>
-        <li>
-          <%= link_to "Home", "/users/#{current_user.id}" %>
-        </li>
-        <li>
-          <%= link_to "Users", users_path %>
-        </li>
-        <li>
-          <%= link_to "Books", books_path %>
-        </li>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </li>
+        <ul>
+          <li>
+            <%= link_to "/users/#{current_user.id}" do %>
+              <i class="fas fa-home"></i>
+              Home
+            <% end %>
+          </li>
+          <li>
+            <%= link_to users_path do %>
+              <i class="fas fa-users"></i>
+              Users
+            <% end %>
+          </li>
+          <li>
+            <%= link_to books_path do %>
+              <i class="fas fa-book-open"></i>
+              Books
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i>
+              Log out
+            <% end %>
+          </li>
+        </ul>
       <% else %>
-        <li>
-          <%= link_to "Home", "/" %>
-        </li>
-        <li>
-          <%= link_to "About", about_path %>
-        </li>
-        <li>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "Log in", new_user_session_path %>
-        </li>
+        <ul>
+          <li>
+            <%= link_to "/" do %>
+              <i class="fas fa-home"></i>
+              Home
+            <% end %>
+          </li>
+          <li>
+            <%= link_to about_path do %>
+              <i class="fas fa-link"></i>
+              About
+            <% end%>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path do %>
+              <i class="fas fa-user-plus"></i>
+              Sign up
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path do %>
+              <i class="fas fa-sign-in-alt"></i>
+              Log in
+            <% end %>
+          </li>
+        </ul>
       <% end %>
     </header>
     <main>
