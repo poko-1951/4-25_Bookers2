@@ -11,75 +11,89 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column">
     <header>
-      <div>
-        <%= link_to "Bookers", "/" %>
-      </div>
-      <% if user_signed_in? %>
-        <ul>
-          <li>
-            <%= link_to "/users/#{current_user.id}" do %>
-              <i class="fas fa-home"></i>
-              Home
-            <% end %>
-          </li>
-          <li>
-            <%= link_to users_path do %>
-              <i class="fas fa-users"></i>
-              Users
-            <% end %>
-          </li>
-          <li>
-            <%= link_to books_path do %>
-              <i class="fas fa-book-open"></i>
-              Books
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fas fa-sign-out-alt"></i>
-              Log out
-            <% end %>
-          </li>
-        </ul>
-      <% else %>
-        <ul>
-          <li>
-            <%= link_to "/" do %>
-              <i class="fas fa-home"></i>
-              Home
-            <% end %>
-          </li>
-          <li>
-            <%= link_to about_path do %>
-              <i class="fas fa-link"></i>
-              About
-            <% end%>
-          </li>
-          <li>
-            <%= link_to new_user_registration_path do %>
-              <i class="fas fa-user-plus"></i>
-              Sign up
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_user_session_path do %>
-              <i class="fas fa-sign-in-alt"></i>
-              Log in
-            <% end %>
-          </li>
-        </ul>
-      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/"><span>Bookers</span></a>
+          <% if user_signed_in? %>
+          <div>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <%= link_to "/users/#{current_user.id}", class:"nav-link text-light" do %>
+                  <i class="fas fa-home"></i>
+                  Home
+                <% end %>
+              </li>
+              <li>
+                <%= link_to users_path, class:"nav-link text-light" do %>
+                  <i class="fas fa-users"></i>
+                  Users
+                <% end %>
+              </li>
+              <li>
+                <%= link_to books_path, class:"nav-link text-light" do %>
+                  <i class="fas fa-book-open"></i>
+                  Books
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+                  <i class="fas fa-sign-out-alt"></i>
+                  Log out
+                <% end %>
+              </li>
+            </ul>
+          <% else %>
+            <ul class="navbar-nav">
+              <li>
+                <%= link_to "/", class:"nav-link text-light" do %>
+                  <i class="fas fa-home"></i>
+                  Home
+                <% end %>
+              </li>
+              <li>
+                <%= link_to about_path, class:"nav-link text-light" do %>
+                  <i class="fas fa-link"></i>
+                  About
+                <% end%>
+              </li>
+              <li>
+                <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
+                  <i class="fas fa-user-plus"></i>
+                  Sign up
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+                  <i class="fas fa-sign-in-alt"></i>
+                  Log in
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          <% end %>
+        </div>
+      </nav>
     </header>
+
     <main>
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: key) %>
-      <% end %>
-      <%= yield %>
+      <p id="notice"><%= notice %></p>
+      <div class="container">
+        <div class="row">
+          <%= yield %>
+        </div>
+      </div>
     </main>
+
     <footer>
-      <p>CopyRight infratop.inc</p>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight infratop.inc</p>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 
