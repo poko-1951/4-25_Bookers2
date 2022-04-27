@@ -1,15 +1,19 @@
 <h2>User info</h2>
 <%= image_tag user.get_profile_image(100,100)%>
-<table>
+<table class="table">
     <tr>
       <th>name</th>
-      <td><%= user.name%></td>
+      <td class="font-weight-bold"><%= user.name%></td>
     </tr>
     <tr>
       <th>introduction</th>
-      <td><%= user.introduction%></td>
+      <td class="font-weight-bold"><%= user.introduction%></td>
     </tr>
 </table>
 <%= link_to edit_user_path(user.id) do%>
-  <i class="fas fa-user-cog"></i>
+  <div class=row>
+    <div class="btn btn-outline-secondary btn-block">
+      <i class="fas fa-user-cog"></i>
+    </div>
+  </div>
 <% end %>

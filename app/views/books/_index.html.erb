@@ -1,10 +1,13 @@
 <h2>Books</h2>
-<table>
-  <tr>
-    <td></td>
-    <th>Title</th>
-    <th>Opinion</th>
-  </tr>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
   <% book.each do |book| %>
     <tr>
       <th><%= link_to image_tag(book.user.get_profile_image(80,80)), user_path(book.user.id)%></th>

@@ -1,4 +1,12 @@
 <%= render "error", book: @book %>
-<%= render "users/show", user: current_user %>
-<%= render "new", book: @book %>
-<%= render "index", book: @books %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "users/show", user: current_user %>
+      <%= render "new", book: @book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <%= render "index", book: @books %>
+    </div>
+  </div>
+</div>
